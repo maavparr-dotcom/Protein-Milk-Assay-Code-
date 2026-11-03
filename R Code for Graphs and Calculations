@@ -1,0 +1,2725 @@
+ # -----------------------------------
+> 
+> # 1. ENTER DATA
+> 
+> # -----------------------------------
+> 
+> # Blue dataset
+> 
+> blue <- data.frame(
++     
++     X = c(94, 110, 124, 126, 123),
++     
++     Y = c(5, 4, 2, 3, 1),
++     
++     Group = "Blue"
++     
++ )
+> 
+> # Red dataset
+> 
+> red <- data.frame(
++     
++     X = c(118, 136, 143, 149, 171),
++     
++     Y = c(5, 4, 2, 3, 1),
++     
++     Group = "Red"
++     
++ )
+> 
+> # Green dataset
+> 
+> green <- data.frame(
++     
++     X = c(124, 143, 151, 160, 166),
++     
++     Y = c(5, 4, 2, 3, 1),
++     
++     Group = "Green"
++     
++ )
+> 
+> # Combine datasets
+> 
+> combined <- rbind(blue, red, green)
+> 
+> # -----------------------------------
+> 
+> # 2. REGRESSION EQUATIONS
+> 
+> # -----------------------------------
+> 
+> # Blue:
+> 
+> # y = -0.098856x + 14.37891
+> 
+> # R² = 0.7188
+> 
+> # Red:
+> 
+> # y = -0.074685x + 13.70344
+> 
+> # R² = 0.8481
+> 
+> # Green:
+> 
+> # y = -0.087181x + 15.95525
+> 
+> # R² = 0.7875
+> 
+> # -----------------------------------
+> 
+> # 3. CREATE GRAPH
+> 
+> # -----------------------------------
+> 
+> plot <- ggplot(
++     
++     combined,
++     
++     aes(x = X, y = Y, color = Group)
++     
++ ) +
++     
++     # Data points
++     
++     geom_point(size = 3.5) +
++     
++     # Blue regression line
++     
++     geom_abline(
++         
++         slope = -0.098856,
++         
++         intercept = 14.37891,
++         
++         color = "blue",
++         
++         linewidth = 1
++         
++     ) +
++     
++     # Red regression line
++     
++     geom_abline(
++         
++         slope = -0.074685,
++         
++         intercept = 13.70344,
++         
++         color = "red",
++         
++         linewidth = 1
++         
++     ) +
++     
++     # Green regression line
++     
++     geom_abline(
++         
++         slope = -0.087181,
++         
++         intercept = 15.95525,
++         
++         color = "forestgreen",
++         
++         linewidth = 1
++         
++     ) +
++     
++     # Dataset colors
++     
++     scale_color_manual(
++         
++         values = c(
++             
++             "Blue" = "blue",
++             
++             "Red" = "red",
++             
++             "Green" = "forestgreen"
++             
++         )
++         
++     ) +
++     
++     # Regression equations and R² values
++     
++     annotate(
++         
++         "text",
++         
++         x = 175, y = 7.5,
++         
++         label = "Blue: y = -0.09886x + 14.37891\nR² = 0.7188",
++         
++         color = "blue",
++         
++         size = 3.5,
++         
++         hjust = 0
++         
++     ) +
++     
++     annotate(
++         
++         "text",
++         
++         x = 175, y = 6.3,
++         
++         label = "Red: y = -0.07469x + 13.70344\nR² = 0.8481",
++         
++         color = "red",
++         
++         size = 3.5,
++         
++         hjust = 0
++         
++     ) +
++     
++     annotate(
++         
++         "text",
++         
++         x = 175, y = 5.1,
++         
++         label = "Green: y = -0.08718x + 15.95525\nR² = 0.7875",
++         
++         color = "forestgreen",
++         
++         size = 3.5,
++         
++         hjust = 0
++         
++     ) +
++     
++     # Axis limits
++     
++     coord_cartesian(
++         
++         xlim = c(75, 250),
++         
++         ylim = c(0, 9)
++         
++     ) +
++     
++     # Titles and labels
++     
++     labs(
++         
++         title = "Comparison of Blue, Red, and Green Datasets",
++         
++         x = "X",
++         
++         y = "Y",
++         
++         color = "Dataset"
++         
++     ) +
++     
++     # Scientific formatting
++     
++     theme_classic(base_size = 14) +
++     
++     theme(
++         
++         plot.title = element_text(
++             
++             hjust = 0.5,
++             
++             face = "bold",
++             
++             size = 16
++             
++         ),
++         
++         axis.title = element_text(size = 14),
++         
++         axis.text = element_text(size = 12),
++         
++         legend.position = "right",
++         
++         legend.title = element_text(face = "bold")
++         
++     )
+Error in ggplot(combined, aes(x = X, y = Y, color = Group)) : 
+  could not find function "ggplot"
+
+> # -----------------------------------
+> # 1. ENTER DATA
+> # -----------------------------------
+> 
+> # Blue dataset
+> blue_x <- c(94, 110, 124, 126, 123)
+> blue_y <- c(5, 4, 2, 3, 1)
+> 
+> # Red dataset
+> red_x <- c(118, 136, 143, 149, 171)
+> red_y <- c(5, 4, 2, 3, 1)
+> 
+> # Green dataset
+> green_x <- c(124, 143, 151, 160, 166)
+> green_y <- c(5, 4, 2, 3, 1)
+> 
+> # -----------------------------------
+> # 2. CREATE COMBINED GRAPH
+> # -----------------------------------
+> 
+> plot(
++     blue_x, blue_y,
++     col = "blue",
++     pch = 16,
++     cex = 1.3,
++     xlim = c(75, 250),
++     ylim = c(0, 9),
++     xlab = "X",
++     ylab = "Y",
++     main = "Comparison of Blue, Red, and Green Datasets"
++ )
+> 
+> # Add red data points
+> points(
++     red_x, red_y,
++     col = "red",
++     pch = 16,
++     cex = 1.3
++ )
+> 
+> # Add green data points
+> points(
++     green_x, green_y,
++     col = "forestgreen",
++     pch = 16,
++     cex = 1.3
++ )
+> 
+> # -----------------------------------
+> # 3. ADD REGRESSION LINES
+> # -----------------------------------
+> 
+> # Blue regression
+> abline(
++     a = 14.37891,
++     b = -0.098856,
++     col = "blue",
++     lwd = 2
++ )
+> 
+> # Red regression
+> abline(
++     a = 13.70344,
++     b = -0.074685,
++     col = "red",
++     lwd = 2
++ )
+> 
+> # Green regression
+> abline(
++     a = 15.95525,
++     b = -0.087181,
++     col = "forestgreen",
++     lwd = 2
++ )
+> 
+> # -----------------------------------
+> # 4. ADD EQUATIONS AND R² VALUES
+> # -----------------------------------
+> 
+> text(
++     175, 7.5,
++     "Blue: y = -0.09886x + 14.37891\nR² = 0.7188",
++     col = "blue",
++     adj = 0,
++     cex = 0.8
++ )
+> 
+> text(
++     175, 6.2,
++     "Red: y = -0.07469x + 13.70344\nR² = 0.8481",
++     col = "red",
++     adj = 0,
++     cex = 0.8
++ )
+> 
+> text(
++     175, 4.9,
++     "Green: y = -0.08718x + 15.95525\nR² = 0.7875",
++     col = "forestgreen",
++     adj = 0,
++     cex = 0.8
++ )
+> 
+> # -----------------------------------
+> # 5. ADD LEGEND
+> # -----------------------------------
+> 
+> legend(
++     "topright",
++     legend = c("Blue", "Red", "Green"),
++     col = c("blue", "red", "forestgreen"),
++     pch = 16,
++     lty = 1,
++     lwd = 2,
++     bty = "n"
++ )
+> 
+> # -----------------------------------
+> # 6. SAVE GRAPH
+> # -----------------------------------
+> 
+> # Run this section to save a PNG file
+> 
+> png(
++     "Combined_Regression_Graph.png",
++     width = 1200,
++     height = 800,
++     res = 150
++ )
+> 
+> # Recreate graph in PNG device
+> plot(
++     blue_x, blue_y,
++     col = "blue",
++     pch = 16,
++     xlim = c(75, 250),
++     ylim = c(0, 9),
++     xlab = "X",
++     ylab = "Y",
++     main = "Comparison of Three Datasets"
++ )
+> 
+> points(red_x, red_y, col = "red", pch = 16)
+> points(green_x, green_y, col = "forestgreen", pch = 16)
+> 
+> abline(14.37891, -0.098856, col = "blue", lwd = 2)
+> abline(13.70344, -0.074685, col = "red", lwd = 2)
+> abline(15.95525, -0.087181, col = "forestgreen", lwd = 2)
+> 
+> text(175, 7.5, "Blue: R² = 0.7188", col = "blue", adj = 0)
+> text(175, 6.2, "Red: R² = 0.8481", col = "red", adj = 0)
+> text(175, 4.9, "Green: R² = 0.7875", col = "forestgreen", adj = 0)
+> 
+> legend(
++     "topright",
++     legend = c("Blue", "Red", "Green"),
++     col = c("blue", "red", "forestgreen"),
++     pch = 16,
++     lty = 1,
++     bty = "n"
++ )
+> 
+> dev.off()
+RStudioGD 
+        2 
+> # -----------------------------------
+> # 1. ENTER DATA
+> # -----------------------------------
+> 
+> blue_x <- c(94, 110, 124, 126, 123)
+> blue_y <- c(5, 4, 2, 3, 1)
+> 
+> red_x <- c(118, 136, 143, 149, 171)
+> red_y <- c(5, 4, 2, 3, 1)
+> 
+> green_x <- c(124, 143, 151, 160, 166)
+> green_y <- c(5, 4, 2, 3, 1)
+> 
+> # -----------------------------------
+> # 2. DEFINE COLORS
+> # -----------------------------------
+> 
+> blue_col <- "#3066BE"
+> red_col <- "#D1495B"
+> green_col <- "#218380"
+> 
+> # -----------------------------------
+> # 3. CREATE GRAPH FUNCTION
+> # -----------------------------------
+> 
+> make_graph <- function() {
++     
++     # Leave room for legend on right
++     par(mar = c(5, 5, 4, 15), xpd = NA)
++     
++     # Create empty graph
++     plot(
++         NA,
++         xlim = c(75, 190),
++         ylim = c(0, 7),
++         xlab = "X",
++         ylab = "Y",
++         main = "Comparison of Three Datasets",
++         cex.main = 1.3,
++         cex.lab = 1.2,
++         las = 1,
++         bty = "l"
++     )
++     
++     # Add light grid
++     grid(
++         col = "gray90",
++         lty = 1
++     )
++     
++     # -----------------------------------
++     # 4. REGRESSION LINES
++     # -----------------------------------
++     
++     abline(
++         a = 14.37891,
++         b = -0.098856,
++         col = blue_col,
++         lwd = 2
++     )
++     
++     abline(
++         a = 13.70344,
++         b = -0.074685,
++         col = red_col,
++         lwd = 2
++     )
++     
++     abline(
++         a = 15.95525,
++         b = -0.087181,
++         col = green_col,
++         lwd = 2
++     )
++     
++     # -----------------------------------
++     # 5. DATA POINTS
++     # -----------------------------------
++     
++     points(
++         blue_x, blue_y,
++         col = blue_col,
++         pch = 16,
++         cex = 1.2
++     )
++     
++     points(
++         red_x, red_y,
++         col = red_col,
++         pch = 16,
++         cex = 1.2
++     )
++     
++     points(
++         green_x, green_y,
++         col = green_col,
++         pch = 16,
++         cex = 1.2
++     )
++     
++     # -----------------------------------
++     # 6. ORGANIZED LEGEND
++     # -----------------------------------
++     
++     legend(
++         "topright",
++         inset = c(-0.57, 0),
++         
++         legend = c(
++             "Blue Dataset",
++             "y = -0.09886x + 14.37891",
++             "R² = 0.7188",
++             "",
++             "Red Dataset",
++             "y = -0.07469x + 13.70344",
++             "R² = 0.8481",
++             "",
++             "Green Dataset",
++             "y = -0.08718x + 15.95525",
++             "R² = 0.7875"
++         ),
++         
++         col = c(
++             blue_col, NA, NA, NA,
++             red_col, NA, NA, NA,
++             green_col, NA, NA
++         ),
++         
++         pch = c(
++             16, NA, NA, NA,
++             16, NA, NA, NA,
++             16, NA, NA
++         ),
++         
++         lty = c(
++             1, 0, 0, 0,
++             1, 0, 0, 0,
++             1, 0, 0
++         ),
++         
++         text.col = c(
++             blue_col, "black", "gray40", "black",
++             red_col, "black", "gray40", "black",
++             green_col, "black", "gray40"
++         ),
++         
++         lwd = 2,
++         cex = 0.85,
++         bty = "n",
++         y.intersp = 1.3
++     )
++ }
+> 
+> # -----------------------------------
+> # 7. DISPLAY GRAPH
+> # -----------------------------------
+> 
+> make_graph()
+Error in plot.new() : figure margins too large
+Called from: plot.new()
+Browse[1]> 
+> # -----------------------------------
+> # 1. DATA
+> # -----------------------------------
+> 
+> blue_x <- c(94, 110, 124, 126, 123)
+> blue_y <- c(5, 4, 2, 3, 1)
+> 
+> red_x <- c(118, 136, 143, 149, 171)
+> red_y <- c(5, 4, 2, 3, 1)
+> 
+> green_x <- c(124, 143, 151, 160, 166)
+> green_y <- c(5, 4, 2, 3, 1)
+> 
+> # -----------------------------------
+> # 2. COLORS
+> # -----------------------------------
+> 
+> blue_col <- "#3066BE"
+> red_col <- "#D1495B"
+> green_col <- "#218380"
+> 
+> # -----------------------------------
+> # 3. GRAPH FUNCTION
+> # -----------------------------------
+> 
+> make_graph <- function() {
++     
++     # Reset margins to normal size
++     par(mar = c(4.5, 4.5, 3, 2))
++     
++     # Create plot
++     plot(
++         blue_x, blue_y,
++         xlim = c(75, 250),
++         ylim = c(0, 8),
++         col = blue_col,
++         pch = 16,
++         cex = 1.2,
++         xlab = "X",
++         ylab = "Y",
++         main = "Comparison of Three Datasets",
++         cex.main = 1.2,
++         bty = "l"
++     )
++     
++     # Grid
++     grid(col = "gray90")
++     
++     # Add points
++     points(red_x, red_y,
++            col = red_col, pch = 16, cex = 1.2)
++     
++     points(green_x, green_y,
++            col = green_col, pch = 16, cex = 1.2)
++     
++     # -----------------------------------
++     # 4. REGRESSION LINES
++     # -----------------------------------
++     
++     abline(14.37891, -0.098856,
++            col = blue_col, lwd = 2)
++     
++     abline(13.70344, -0.074685,
++            col = red_col, lwd = 2)
++     
++     abline(15.95525, -0.087181,
++            col = green_col, lwd = 2)
++     
++     # -----------------------------------
++     # 5. CLEAN LEGEND
++     # -----------------------------------
++     
++     legend(
++         "topright",
++         
++         legend = c(
++             "BLUE DATASET",
++             "y = -0.09886x + 14.37891",
++             "R² = 0.7188",
++             "",
++             "RED DATASET",
++             "y = -0.07469x + 13.70344",
++             "R² = 0.8481",
++             "",
++             "GREEN DATASET",
++             "y = -0.08718x + 15.95525",
++             "R² = 0.7875"
++         ),
++         
++         col = c(
++             blue_col, NA, NA, NA,
++             red_col, NA, NA, NA,
++             green_col, NA, NA
++         ),
++         
++         pch = c(
++             16, NA, NA, NA,
++             16, NA, NA, NA,
++             16, NA, NA
++         ),
++         
++         lty = c(
++             1, 0, 0, 0,
++             1, 0, 0, 0,
++             1, 0, 0
++         ),
++         
++         text.col = c(
++             blue_col, "black", "gray40", "black",
++             red_col, "black", "gray40", "black",
++             green_col, "black", "gray40"
++         ),
++         
++         cex = 0.75,
++         bty = "n",
++         y.intersp = 1.1
++     )
++ }
+> 
+> # -----------------------------------
+> # 6. DISPLAY GRAPH
+> # -----------------------------------
+> 
+> make_graph()
+> 
+> # -----------------------------------
+> # 7. SAVE GRAPH
+> # -----------------------------------
+> 
+> png(
++     "Combined_Regression_Graph.png",
++     width = 1800,
++     height = 1000,
++     res = 180
++ )
+> 
+> make_graph()
+> 
+> dev.off()
+RStudioGD 
+        2 
+> # Enter your experimental data
+> concentration <- c(1, 2, 3, 4, 5)  # mg/mL
+> 
+> # Replace with your measured average areas
+> average_area <- c(10, 20, 30, 40, 50)
+> 
+> # Linear regression
+> model <- lm(concentration ~ average_area)
+> 
+> # Extract equation and R-squared
+> slope <- coef(model)[2]
+> intercept <- coef(model)[1]
+> r_squared <- summary(model)$r.squared
+Warning message:
+In summary.lm(model) : essentially perfect fit: summary may be unreliable
+> 
+> # Create graph
+> plot(average_area, concentration,
++      main = "Protein Quantification in Milk Samples",
++      xlab = "Average Area",
++      ylab = "Protein Concentration (mg/mL)",
++      pch = 19,
++      col = "blue",
++      cex = 1.3)
+> 
+> # Add regression line
+> abline(model, col = "red", lwd = 2)
+> 
+> # Add equation and R-squared
+> legend("topleft",
++        legend = c(
++            paste0("y = ", round(slope, 4),
++                   "x + ", round(intercept, 4)),
++            paste0("R² = ", round(r_squared, 4))
++        ),
++        bty = "n",
++        cex = 0.9)
+> 
+> # Print regression results
+> summary(model)
+
+Call:
+lm(formula = concentration ~ average_area)
+
+Residuals:
+         1          2          3 
+-3.254e-16  4.469e-16  6.700e-17 
+         4          5 
+-1.730e-16 -1.546e-17 
+
+Coefficients:
+               Estimate Std. Error
+(Intercept)  -2.268e-16  3.532e-16
+average_area  1.000e-01  1.065e-17
+                t value Pr(>|t|)    
+(Intercept)  -6.420e-01    0.566    
+average_area  9.389e+15   <2e-16 ***
+---
+Signif. codes:  
+  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05
+  ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 3.368e-16 on 3 degrees of freedom
+Multiple R-squared:      1,	Adjusted R-squared:      1 
+F-statistic: 8.816e+31 on 1 and 3 DF,  p-value: < 2.2e-16
+
+Warning message:
+In summary.lm(model) : essentially perfect fit: summary may be unreliable
+
+> # Enter your original data
+> # Replace these with your previous average area measurements
+> 
+> whole_area <- c()
+> whole_conc <- c()
+> 
+> skim_area <- c()
+> skim_conc <- c()
+> 
+> almond_area <- c()
+> almond_conc <- c()
+> 
+> # Create graph
+> plot(whole_area, whole_conc,
++      main = "Protein Concentration in Milk Samples",
++      xlab = "Average Area",
++      ylab = "Protein Concentration (mg/mL)",
++      col = "blue",
++      pch = 19,
++      cex = 1.2,
++      xlim = range(c(whole_area, skim_area, almond_area)),
++      ylim = range(c(whole_conc, skim_conc, almond_conc)))
+Error in plot.window(...) : need finite 'xlim' values
+In addition: 
+Warning messages:
+1: In min(x, na.rm = na.rm) :
+  no non-missing arguments to min; returning Inf
+2: In max(x, na.rm = na.rm) :
+  no non-missing arguments to max; returning -Inf
+3: In min(x, na.rm = na.rm) :
+  no non-missing arguments to min; returning Inf
+4: In max(x, na.rm = na.rm) :
+  no non-missing arguments to max; returning -Inf
+
+> # Enter your experimental data
+> concentration <- c(1, 2, 3, 4, 5)  # mg/mL
+> 
+> # Replace with your measured average areas
+> average_area <- c(10, 20, 30, 40, 50)
+> 
+> # Linear regression
+> model <- lm(concentration ~ average_area)
+> 
+> # Extract equation and R-squared
+> slope <- coef(model)[2]
+> intercept <- coef(model)[1]
+> r_squared <- summary(model)$r.squared
+Warning message:
+In summary.lm(model) : essentially perfect fit: summary may be unreliable
+> 
+> # Create graph
+> plot(average_area, concentration,
++      main = "Protein Quantification in Milk Samples",
++      xlab = "Average Area",
++      ylab = "Protein Concentration (mg/mL)",
++      pch = 19,
++      col = "blue",
++      cex = 1.3)
+> 
+> # Add regression line
+> abline(model, col = "red", lwd = 2)
+> 
+> # Add equation and R-squared
+> legend("topleft",
++        legend = c(
++            paste0("y = ", round(slope, 4),
++                   "x + ", round(intercept, 4)),
++            paste0("R² = ", round(r_squared, 4))
++        ),
++        bty = "n",
++        cex = 0.9)
+> 
+> # Print regression results
+> summary(model)
+
+Call:
+lm(formula = concentration ~ average_area)
+
+Residuals:
+         1          2          3 
+-3.254e-16  4.469e-16  6.700e-17 
+         4          5 
+-1.730e-16 -1.546e-17 
+
+Coefficients:
+               Estimate Std. Error
+(Intercept)  -2.268e-16  3.532e-16
+average_area  1.000e-01  1.065e-17
+                t value Pr(>|t|)    
+(Intercept)  -6.420e-01    0.566    
+average_area  9.389e+15   <2e-16 ***
+---
+Signif. codes:  
+  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05
+  ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 3.368e-16 on 3 degrees of freedom
+Multiple R-squared:      1,	Adjusted R-squared:      1 
+F-statistic: 8.816e+31 on 1 and 3 DF,  p-value: < 2.2e-16
+
+Warning message:
+In summary.lm(model) : essentially perfect fit: summary may be unreliable
+
+> # Enter your experimental data
+> concentration <- c(1, 2, 3, 4, 5)  # mg/mL
+> 
+> # Replace with your measured average areas
+> average_area <- c(10, 20, 30, 40, 50)
+> 
+> # Linear regression
+> model <- lm(concentration ~ average_area)
+> 
+> # Extract equation and R-squared
+> slope <- coef(model)[2]
+> intercept <- coef(model)[1]
+> r_squared <- summary(model)$r.squared
+Warning message:
+In summary.lm(model) : essentially perfect fit: summary may be unreliable
+> 
+> # Create graph
+> plot(average_area, concentration,
++      main = "Protein Quantification in Milk Samples",
++      xlab = "Average Area",
++      ylab = "Protein Concentration (mg/mL)",
++      pch = 19,
++      col = "blue",
++      cex = 1.3)
+> 
+> # Add regression line
+> abline(model, col = "red", lwd = 2)
+> 
+> # Add equation and R-squared
+> legend("topleft",
++        legend = c(
++            paste0("y = ", round(slope, 4),
++                   "x + ", round(intercept, 4)),
++            paste0("R² = ", round(r_squared, 4))
++        ),
++        bty = "n",
++        cex = 0.9)
+> 
+> # Print regression results
+> summary(model)
+
+Call:
+lm(formula = concentration ~ average_area)
+
+Residuals:
+         1          2          3 
+-3.254e-16  4.469e-16  6.700e-17 
+         4          5 
+-1.730e-16 -1.546e-17 
+
+Coefficients:
+               Estimate Std. Error
+(Intercept)  -2.268e-16  3.532e-16
+average_area  1.000e-01  1.065e-17
+                t value Pr(>|t|)    
+(Intercept)  -6.420e-01    0.566    
+average_area  9.389e+15   <2e-16 ***
+---
+Signif. codes:  
+  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05
+  ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 3.368e-16 on 3 degrees of freedom
+Multiple R-squared:      1,	Adjusted R-squared:      1 
+F-statistic: 8.816e+31 on 1 and 3 DF,  p-value: < 2.2e-16
+
+Warning message:
+In summary.lm(model) : essentially perfect fit: summary may be unreliable
+
+> # ==========================================
+> # 1. DATA
+> # ==========================================
+> 
+> # Blue dataset
+> blue_x <- c(94, 110, 124, 126, 123)
+> blue_y <- c(5, 4, 2, 3, 1)
+> 
+> # Red dataset
+> red_x <- c(118, 136, 143, 149, 171)
+> red_y <- c(5, 4, 2, 3, 1)
+> 
+> # Green dataset
+> green_x <- c(124, 143, 151, 160, 166)
+> green_y <- c(5, 4, 2, 3, 1)
+> 
+> # ==========================================
+> # 2. COLORS
+> # ==========================================
+> 
+> blue_col <- "#3066BE"
+> red_col <- "#D1495B"
+> green_col <- "#218380"
+> 
+> # ==========================================
+> # 3. REGRESSION INFORMATION
+> # ==========================================
+> 
+> # Original regression equations
+> # Blue:  y = -0.098856x + 14.37891
+> # Red:  y = -0.074685x + 13.70344
+> # Green: y = -0.087181x + 15.95525
+> 
+> # Original R-squared values
+> blue_r2 <- 0.7188
+> red_r2 <- 0.8481
+> green_r2 <- 0.7875
+> 
+> # ==========================================
+> # 4. CREATE GRAPH FUNCTION
+> # ==========================================
+> 
+> make_graph <- function() {
++     
++     # Normal margins to prevent plotting errors
++     par(mar = c(5, 5, 4, 2))
++     
++     # Create blank plot
++     plot(
++         NA,
++         xlim = c(75, 250),
++         ylim = c(0, 9),
++         xlab = "Average Mass",
++         ylab = "Concentration (mg/mL)",
++         main = "Concentration vs. Average Mass",
++         cex.main = 1.3,
++         cex.lab = 1.2,
++         cex.axis = 1,
++         bty = "l"
++     )
++     
++     # Add light grid
++     grid(
++         col = "gray90",
++         lty = 1
++     )
++     
++     # ==========================================
++     # 5. REGRESSION LINES
++     # ==========================================
++     
++     abline(
++         a = 14.37891,
++         b = -0.098856,
++         col = blue_col,
++         lwd = 2
++     )
++     
++     abline(
++         a = 13.70344,
++         b = -0.074685,
++         col = red_col,
++         lwd = 2
++     )
++     
++     abline(
++         a = 15.95525,
++         b = -0.087181,
++         col = green_col,
++         lwd = 2
++     )
++     
++     # ==========================================
++     # 6. DATA POINTS
++     # ==========================================
++     
++     points(
++         blue_x, blue_y,
++         col = blue_col,
++         pch = 16,
++         cex = 1.2
++     )
++     
++     points(
++         red_x, red_y,
++         col = red_col,
++         pch = 16,
++         cex = 1.2
++     )
++     
++     points(
++         green_x, green_y,
++         col = green_col,
++         pch = 16,
++         cex = 1.2
++     )
++     
++     # ==========================================
++     # 7. CLEAN LEGEND
++     # ==========================================
++     
++     legend(
++         "topright",
++         
++         legend = c(
++             "BLUE",
++             "y = -0.09886x + 14.37891",
++             "R² = 0.7188",
++             "",
++             "RED",
++             "y = -0.07469x + 13.70344",
++             "R² = 0.8481",
++             "",
++             "GREEN",
++             "y = -0.08718x + 15.95525",
++             "R² = 0.7875"
++         ),
++         
++         col = c(
++             blue_col, NA, NA, NA,
++             red_col, NA, NA, NA,
++             green_col, NA, NA
++         ),
++         
++         pch = c(
++             16, NA, NA, NA,
++             16, NA, NA, NA,
++             16, NA, NA
++         ),
++         
++         lty = c(
++             1, 0, 0, 0,
++             1, 0, 0, 0,
++             1, 0, 0
++         ),
++         
++         text.col = c(
++             blue_col, "black", "gray40", "black",
++             red_col, "black", "gray40", "black",
++             green_col, "black", "gray40"
++         ),
++         
++         lwd = 2,
++         cex = 0.75,
++         bty = "n",
++         y.intersp = 1.1
++     )
++ }
+> 
+> # ==========================================
+> # 8. DISPLAY GRAPH
+> # ==========================================
+> 
+> make_graph()
+> 
+> # ==========================================
+> # 9. SAVE HIGH-RESOLUTION GRAPH
+> # ==========================================
+> 
+> png(
++     filename = "Concentration_vs_Average_Mass.png",
++     width = 1800,
++     height = 1000,
++     res = 180
++ )
+> 
+> make_graph()
+> 
+> dev.off()
+RStudioGD 
+        2 
+> # ==========================================
+> # 5. REGRESSION LINES (LIMITED TO DATA RANGE)
+> # ==========================================
+> 
+> # Blue regression line
+> blue_line_x <- seq(min(blue_x), max(blue_x), length.out = 100)
+> blue_line_y <- 14.37891 - 0.098856 * blue_line_x
+> 
+> lines(
++     blue_line_x, blue_line_y,
++     col = blue_col,
++     lwd = 2
++ )
+> 
+> # Red regression line
+> red_line_x <- seq(min(red_x), max(red_x), length.out = 100)
+> red_line_y <- 13.70344 - 0.074685 * red_line_x
+> 
+> lines(
++     red_line_x, red_line_y,
++     col = red_col,
++     lwd = 2
++ )
+> 
+> # Green regression line
+> green_line_x <- seq(min(green_x), max(green_x), length.out = 100)
+> green_line_y <- 15.95525 - 0.087181 * green_line_x
+> 
+> lines(
++     green_line_x, green_line_y,
++     col = green_col,
++     lwd = 2
++ )
+> # ==========================================
+> # 1. DATA
+> # ==========================================
+> 
+> # Blue dataset
+> blue_x <- c(94, 110, 124, 126, 123)
+> blue_y <- c(5, 4, 2, 3, 1)
+> 
+> # Red dataset
+> red_x <- c(118, 136, 143, 149, 171)
+> red_y <- c(5, 4, 2, 3, 1)
+> 
+> # Green dataset
+> green_x <- c(124, 143, 151, 160, 166)
+> green_y <- c(5, 4, 2, 3, 1)
+> 
+> # ==========================================
+> # 2. COLORS
+> # ==========================================
+> 
+> blue_col <- "#3066BE"
+> red_col <- "#D1495B"
+> green_col <- "#218380"
+> 
+> # ==========================================
+> # 3. REGRESSION INFORMATION
+> # ==========================================
+> 
+> # Original regression equations
+> # Blue:  y = -0.098856x + 14.37891
+> # Red:  y = -0.074685x + 13.70344
+> # Green: y = -0.087181x + 15.95525
+> 
+> # Original R-squared values
+> blue_r2 <- 0.7188
+> red_r2 <- 0.8481
+> green_r2 <- 0.7875
+> 
+> # ==========================================
+> # 4. CREATE GRAPH FUNCTION
+> # ==========================================
+> 
+> make_graph <- function() {
++     
++     # Normal margins to prevent plotting errors
++     par(mar = c(5, 5, 4, 2))
++     
++     # Create blank plot
++     plot(
++         NA,
++         xlim = c(75, 250),
++         ylim = c(0, 9),
++         xlab = "Average Mass",
++         ylab = "Concentration (mg/mL)",
++         main = "Concentration vs. Average Mass",
++         cex.main = 1.3,
++         cex.lab = 1.2,
++         cex.axis = 1,
++         bty = "l"
++     )
++     
++     # Add light grid
++     grid(
++         col = "gray90",
++         lty = 1
++     )
++     
++     # ==========================================
++     # 5. REGRESSION LINES
++     # ==========================================
++     
++     abline(
++         a = 14.37891,
++         b = -0.098856,
++         col = blue_col,
++         lwd = 2
++     )
++     
++     abline(
++         a = 13.70344,
++         b = -0.074685,
++         col = red_col,
++         lwd = 2
++     )
++     
++     abline(
++         a = 15.95525,
++         b = -0.087181,
++         col = green_col,
++         lwd = 2
++     )
++     
++     # ==========================================
++     # 6. DATA POINTS
++     # ==========================================
++     
++     points(
++         blue_x, blue_y,
++         col = blue_col,
++         pch = 16,
++         cex = 1.2
++     )
++     
++     points(
++         red_x, red_y,
++         col = red_col,
++         pch = 16,
++         cex = 1.2
++     )
++     
++     points(
++         green_x, green_y,
++         col = green_col,
++         pch = 16,
++         cex = 1.2
++     )
++     
++     # ==========================================
++     # 7. CLEAN LEGEND
++     # ==========================================
++     
++     legend(
++         "topright",
++         
++         legend = c(
++             "BLUE",
++             "y = -0.09886x + 14.37891",
++             "R² = 0.7188",
++             "",
++             "RED",
++             "y = -0.07469x + 13.70344",
++             "R² = 0.8481",
++             "",
++             "GREEN",
++             "y = -0.08718x + 15.95525",
++             "R² = 0.7875"
++         ),
++         
++         col = c(
++             blue_col, NA, NA, NA,
++             red_col, NA, NA, NA,
++             green_col, NA, NA
++         ),
++         
++         pch = c(
++             16, NA, NA, NA,
++             16, NA, NA, NA,
++             16, NA, NA
++         ),
++         
++         lty = c(
++             1, 0, 0, 0,
++             1, 0, 0, 0,
++             1, 0, 0
++         ),
++         
++         text.col = c(
++             blue_col, "black", "gray40", "black",
++             red_col, "black", "gray40", "black",
++             green_col, "black", "gray40"
++         ),
++         
++         lwd = 2,
++         cex = 0.75,
++         bty = "n",
++         y.intersp = 1.1
++     )
++ }
+> 
+> # ==========================================
+> # 8. DISPLAY GRAPH
+> # ==========================================
+> 
+> make_graph()
+> 
+> # ==========================================
+> # 9. SAVE HIGH-RESOLUTION GRAPH
+> # ==========================================
+> 
+> png(
++     filename = "Concentration_vs_Average_Mass.png",
++     width = 1800,
++     height = 1000,
++     res = 180
++ )
+> 
+> make_graph()
+> 
+> dev.off()
+RStudioGD 
+        2 
+> # ==========================================
+> # 1. DATA
+> # ==========================================
+> 
+> # Replace estimated values with actual measurements
+> 
+> blue_x <- c(94, 110, 124, 126, 123)
+> blue_y <- c(5, 4, 2, 3, 1)
+> 
+> red_x <- c(118, 136, 143, 149, 171)
+> red_y <- c(5, 4, 2, 3, 1)
+> 
+> green_x <- c(124, 143, 151, 160, 166)
+> green_y <- c(5, 4, 2, 3, 1)
+> 
+> 
+> # ==========================================
+> # 2. COLORS
+> # ==========================================
+> 
+> blue_col <- "#3066BE"
+> red_col <- "#D1495B"
+> green_col <- "#218380"
+> 
+> 
+> # ==========================================
+> # 3. REGRESSION EQUATIONS
+> # ==========================================
+> 
+> blue_slope <- -0.098856
+> blue_intercept <- 14.37891
+> blue_r2 <- 0.7188
+> 
+> red_slope <- -0.074685
+> red_intercept <- 13.70344
+> red_r2 <- 0.8481
+> 
+> green_slope <- -0.087181
+> green_intercept <- 15.95525
+> green_r2 <- 0.7875
+> 
+> 
+> # ==========================================
+> # 4. FUNCTION TO DRAW REGRESSION LINES
+> # ==========================================
+> 
+> # This function clips lines at:
+> # x = 0 (Y-axis)
+> # y = 0 (X-axis)
+> # and the right/top boundaries of the plot.
+> 
+> draw_regression <- function(slope, intercept, color,
++                             x_max, y_max) {
++     
++     # Generate X values
++     x <- seq(0, x_max, length.out = 1000)
++     
++     # Calculate predicted Y values
++     y <- intercept + slope * x
++     
++     # Keep only values inside graph boundaries
++     valid <- (
++         x >= 0 &
++             x <= x_max &
++             y >= 0 &
++             y <= y_max
++     )
++     
++     # Draw only valid portion
++     lines(
++         x[valid],
++         y[valid],
++         col = color,
++         lwd = 2.5
++     )
++ }
+> 
+> 
+> # ==========================================
+> # 5. CREATE GRAPH FUNCTION
+> # ==========================================
+> 
+> make_graph <- function() {
++     
++     # Separate graph and legend panels
++     layout(
++         matrix(c(1, 2), nrow = 1),
++         widths = c(3.2, 1.8)
++     )
++     
++     # ------------------------------------------
++     # LEFT PANEL: GRAPH
++     # ------------------------------------------
++     
++     par(
++         mar = c(5, 5, 4, 1),
++         xpd = FALSE
++     )
++     
++     # Define axis limits
++     x_max <- 200
++     y_max <- 17
++     
++     # Create empty graph
++     plot(
++         NA,
++         xlim = c(0, x_max),
++         ylim = c(0, y_max),
++         xaxs = "i",
++         yaxs = "i",
++         xlab = "Average Mass",
++         ylab = "Concentration (mg/mL)",
++         main = "Concentration vs. Average Mass",
++         cex.main = 1.2,
++         cex.lab = 1.1,
++         cex.axis = 0.9,
++         bty = "l"
++     )
++     
++     # Add light grid
++     grid(col = "gray90")
++     
++     # ------------------------------------------
++     # REGRESSION LINES
++     # ------------------------------------------
++     
++     draw_regression(
++         blue_slope,
++         blue_intercept,
++         blue_col,
++         x_max,
++         y_max
++     )
++     
++     draw_regression(
++         red_slope,
++         red_intercept,
++         red_col,
++         x_max,
++         y_max
++     )
++     
++     draw_regression(
++         green_slope,
++         green_intercept,
++         green_col,
++         x_max,
++         y_max
++     )
++     
++     # ------------------------------------------
++     # DATA POINTS
++     # ------------------------------------------
++     
++     points(
++         blue_x, blue_y,
++         col = blue_col,
++         pch = 16,
++         cex = 1.2
++     )
++     
++     points(
++         red_x, red_y,
++         col = red_col,
++         pch = 16,
++         cex = 1.2
++     )
++     
++     points(
++         green_x, green_y,
++         col = green_col,
++         pch = 16,
++         cex = 1.2
++     )
++     
++     # ------------------------------------------
++     # RIGHT PANEL: LEGEND
++     # ------------------------------------------
++     
++     par(mar = c(5, 0.5, 4, 1))
++     
++     plot.new()
++     
++     plot.window(
++         xlim = c(0, 1),
++         ylim = c(0, 1)
++     )
++     
++     # Blue dataset
++     text(
++         0, 0.85,
++         "BLUE DATASET",
++         col = blue_col,
++         font = 2,
++         adj = 0,
++         cex = 0.95
++     )
++     
++     text(
++         0, 0.77,
++         "y = -0.09886x + 14.37891",
++         adj = 0,
++         cex = 0.75
++     )
++     
++     text(
++         0, 0.70,
++         "R² = 0.7188",
++         adj = 0,
++         cex = 0.75
++     )
++     
++     # Red dataset
++     text(
++         0, 0.53,
++         "RED DATASET",
++         col = red_col,
++         font = 2,
++         adj = 0,
++         cex = 0.95
++     )
++     
++     text(
++         0, 0.45,
++         "y = -0.07469x + 13.70344",
++         adj = 0,
++         cex = 0.75
++     )
++     
++     text(
++         0, 0.38,
++         "R² = 0.8481",
++         adj = 0,
++         cex = 0.75
++     )
++     
++     # Green dataset
++     text(
++         0, 0.21,
++         "GREEN DATASET",
++         col = green_col,
++         font = 2,
++         adj = 0,
++         cex = 0.95
++     )
++     
++     text(
++         0, 0.13,
++         "y = -0.08718x + 15.95525",
++         adj = 0,
++         cex = 0.75
++     )
++     
++     text(
++         0, 0.06,
++         "R² = 0.7875",
++         adj = 0,
++         cex = 0.75
++     )
++     
++     # Reset layout
++     layout(1)
++ }
+> 
+> 
+> # ==========================================
+> # 6. SAVE HIGH-RESOLUTION GRAPH
+> # ==========================================
+> 
+> png(
++     filename = "Concentration_vs_Average_Mass.png",
++     width = 2400,
++     height = 1200,
++     res = 200
++ )
+> 
+> make_graph()
+> 
+> dev.off()
+RStudioGD 
+        2 
+> 
+> 
+> # ==========================================
+> # 7. DISPLAY GRAPH
+> # ==========================================
+> 
+> # Opens a larger plotting window on Mac
+> if (capabilities("aqua")) {
++     quartz(width = 12, height = 6)
++ }
+> 
+> make_graph()
+> # ==========================================
+> # 1. ENTER DATA
+> # ==========================================
+> 
+> blue <- c(92.585, 85.927, 82.120)
+> 
+> green <- c(173.037, 156.700, 146.478)
+> 
+> red <- c(190.984, 166.126, 155.335)
+> 
+> 
+> # ==========================================
+> # 2. CALCULATE MEANS AND STANDARD DEVIATIONS
+> # ==========================================
+> 
+> means <- c(
++     mean(blue),
++     mean(green),
++     mean(red)
++ )
+> 
+> sds <- c(
++     sd(blue),
++     sd(green),
++     sd(red)
++ )
+> 
+> # Display results
+> results <- data.frame(
++     Color = c("Blue", "Green", "Red"),
++     Mean_Area = means,
++     SD = sds
++ )
+> 
+> print(results)
+  Color Mean_Area       SD
+1  Blue  86.87733  5.29683
+2 Green 158.73833 13.39631
+3   Red 170.81500 18.28122
+> 
+> 
+> # ==========================================
+> # 3. DEFINE COLORS
+> # ==========================================
+> 
+> colors <- c(
++     "#3066BE",
++     "#218380",
++     "#D1495B"
++ )
+> 
+> 
+> # ==========================================
+> # 4. CREATE GRAPH FUNCTION
+> # ==========================================
+> 
+> make_graph <- function() {
++     
++     par(mar = c(5, 5, 4, 2))
++     
++     # Create empty graph
++     plot(
++         NA,
++         xlim = c(0.5, 3.5),
++         ylim = c(60, 220),
++         xlab = "Trial",
++         ylab = "Measured Area",
++         main = "Soy Milk Unknown: Protein Assay Response",
++         xaxt = "n",
++         bty = "l",
++         cex.main = 1.2,
++         cex.lab = 1.1
++     )
++     
++     # X-axis labels
++     axis(
++         1,
++         at = 1:3,
++         labels = c("Blue", "Green", "Red")
++     )
++     
++     # Light grid
++     abline(
++         h = seq(60, 220, 20),
++         col = "gray90",
++         lty = 1
++     )
++     
++     # ------------------------------------------
++     # 5. INDIVIDUAL MEASUREMENTS
++     # ------------------------------------------
++     
++     # Slightly offset points to prevent overlap
++     points(
++         rep(1, 3) + c(-0.08, 0, 0.08),
++         blue,
++         col = colors[1],
++         pch = 16,
++         cex = 1.2
++     )
++     
++     points(
++         rep(2, 3) + c(-0.08, 0, 0.08),
++         green,
++         col = colors[2],
++         pch = 16,
++         cex = 1.2
++     )
++     
++     points(
++         rep(3, 3) + c(-0.08, 0, 0.08),
++         red,
++         col = colors[3],
++         pch = 16,
++         cex = 1.2
++     )
++     
++     # ------------------------------------------
++     # 6. MEAN VALUES
++     # ------------------------------------------
++     
++     points(
++         1:3,
++         means,
++         pch = 18,
++         cex = 1.8,
++         col = colors
++     )
++     
++     # ------------------------------------------
++     # 7. STANDARD DEVIATION ERROR BARS
++     # ------------------------------------------
++     
++     arrows(
++         x0 = 1:3,
++         y0 = means - sds,
++         x1 = 1:3,
++         y1 = means + sds,
++         angle = 90,
++         code = 3,
++         length = 0.08,
++         col = colors,
++         lwd = 2
++     )
++     
++     # ------------------------------------------
++     # 8. LEGEND
++     # ------------------------------------------
++     
++     legend(
++         "topleft",
++         legend = c(
++             "Individual Measurements",
++             "Mean",
++             "Mean +/- SD"
++         ),
++         pch = c(16, 18, NA),
++         lty = c(NA, NA, 1),
++         col = "gray30",
++         bty = "n",
++         cex = 0.85
++     )
++ }
+> 
+> 
+> # ==========================================
+> # 9. DISPLAY GRAPH
+> # ==========================================
+> 
+> make_graph()
+> 
+> 
+> # ==========================================
+> # 10. SAVE GRAPH
+> # ==========================================
+> 
+> png(
++     "Soy_Milk_Unknown_Area.png",
++     width = 1800,
++     height = 1200,
++     res = 200
++ )
+> 
+> make_graph()
+> 
+> dev.off()
+RStudioGD 
+        2 
+Error in readChar(con, 5L, useBytes = TRUE) : cannot open the connection
+In addition: 
+Warning message:
+In readChar(con, 5L, useBytes = TRUE) :
+  cannot open compressed file '/var/folders/tj/rlwttr117hn2fhl6rmgh9_wr0000gp/T/RtmpeRPZ5X/rs-graphics-53a8f945-11fa-444e-bf2e-8b614260406a/5c647333-0199-46ca-8a7c-3a166c2ad903.snapshot', probable reason 'No such file or directory'
+Graphics error: Plot rendering error
+> # ==========================================
+> # RED CHANNEL PROTEIN CALIBRATION CURVE
+> # ==========================================
+> 
+> # Data approximated from the provided graph
+> # Replace with exact ImageJ values if available
+> 
+> red_intensity <- c(118, 136, 143, 149, 171)
+> protein_conc <- c(5, 4, 2, 3, 1)
+> 
+> # Regression equation from original graph
+> slope <- -0.074685
+> intercept <- 13.70344
+> r_squared <- 0.8481
+> 
+> # ==========================================
+> # CREATE GRAPH
+> # ==========================================
+> 
+> par(mar = c(5, 5, 4, 2) + 0.1)
+> 
+> plot(
++     red_intensity,
++     protein_conc,
++     main = "Red Channel Protein Calibration Curve",
++     xlab = "Mean Red Pixel Intensity",
++     ylab = "Protein Concentration (mg/mL)",
++     pch = 19,
++     col = "red",
++     cex = 1.3,
++     xlim = c(100, 190),
++     ylim = c(0, 6),
++     xaxs = "i",
++     yaxs = "i",
++     las = 1
++ )
+> 
+> # Add grid
+> grid(col = "lightgray", lty = "dotted")
+> 
+> # ==========================================
+> # REGRESSION LINE
+> # ==========================================
+> 
+> # Limit line to graph boundaries
+> x_line <- seq(100, 190, length.out = 200)
+> y_line <- slope * x_line + intercept
+> 
+> valid <- y_line >= 0 & y_line <= 6
+> 
+> lines(
++     x_line[valid],
++     y_line[valid],
++     col = "blue",
++     lwd = 2
++ )
+> 
+> # ==========================================
+> # EQUATION AND R-SQUARED
+> # ==========================================
+> 
+> legend(
++     "topright",
++     legend = c(
++         "y = -0.074685x + 13.70344",
++         expression(R^2 == 0.8481)
++     ),
++     bty = "n",
++     cex = 0.9,
++     text.col = "blue"
++ )
+> 
+> # ==========================================
+> # PRINT RESULTS
+> # ==========================================
+> 
+> cat("RED CHANNEL CALIBRATION CURVE\n")
+RED CHANNEL CALIBRATION CURVE
+> cat("Equation: y = -0.074685x + 13.70344\n")
+Equation: y = -0.074685x + 13.70344
+> cat("R-squared:", r_squared, "\n")
+R-squared: 0.8481 
+> # ==========================================
+> # ALMOND MILK UNKNOWN - RED CHANNEL ONLY
+> # ==========================================
+> 
+> # Red channel data for almond milk
+> # From your previously provided ImageJ measurements
+> red_area <- c(190.984, 166.126, 155.335)
+> 
+> # Calculate statistics
+> mean_red <- mean(red_area)
+> sd_red <- sd(red_area)
+> 
+> # ==========================================
+> # CREATE GRAPH
+> # ==========================================
+> 
+> par(mar = c(5, 5, 4, 2) + 0.1)
+> 
+> plot(
++     1, mean_red,
++     type = "n",
++     xlim = c(0.5, 1.5),
++     ylim = c(130, 210),
++     xaxt = "n",
++     xlab = "Color Channel",
++     ylab = "Measured Area",
++     main = "Almond Milk Unknown: Protein Assay Response",
++     cex.main = 1.1,
++     cex.lab = 1.2,
++     las = 1
++ )
+> 
+> # Add horizontal gridlines
+> abline(
++     h = seq(130, 210, by = 10),
++     col = "lightgray",
++     lty = 1
++ )
+> 
+> # ==========================================
+> # STANDARD DEVIATION ERROR BARS
+> # ==========================================
+> 
+> arrows(
++     x0 = 1,
++     y0 = mean_red - sd_red,
++     x1 = 1,
++     y1 = mean_red + sd_red,
++     angle = 90,
++     code = 3,
++     length = 0.08,
++     col = "firebrick",
++     lwd = 2
++ )
+> 
+> # ==========================================
+> # INDIVIDUAL MEASUREMENTS
+> # ==========================================
+> 
+> points(
++     x = c(0.96, 1, 1.04),
++     y = red_area,
++     pch = 16,
++     col = "firebrick",
++     cex = 1.4
++ )
+> 
+> # ==========================================
+> # MEAN (DIAMOND)
+> # ==========================================
+> 
+> points(
++     1, mean_red,
++     pch = 18,
++     col = "firebrick",
++     cex = 1.8
++ )
+> 
+> # X-axis label
+> axis(
++     1,
++     at = 1,
++     labels = "Red",
++     cex.axis = 1.2
++ )
+> 
+> # ==========================================
+> # LEGEND
+> # ==========================================
+> 
+> legend(
++     "topleft",
++     legend = c(
++         "Individual Measurements",
++         "Mean",
++         "Mean +/- SD"
++     ),
++     pch = c(16, 18, NA),
++     lty = c(NA, NA, 1),
++     col = c("firebrick", "firebrick", "firebrick"),
++     bty = "n",
++     cex = 0.9
++ )
+> 
+> # ==========================================
+> # PRINT RESULTS
+> # ==========================================
+> 
+> cat("ALMOND MILK - RED CHANNEL\n")
+ALMOND MILK - RED CHANNEL
+> cat("Mean:", round(mean_red, 3), "\n")
+Mean: 170.815 
+> cat("Standard Deviation:", round(sd_red, 3), "\n")
+Standard Deviation: 18.281 
+> cat("Number of Measurements:", length(red_area), "\n")
+Number of Measurements: 3 
+> # ==========================================
+> # ALMOND MILK UNKNOWN - RED CHANNEL ONLY
+> # ==========================================
+> 
+> # Red channel data for almond milk
+> red_area <- c(190.984, 166.126, 155.335)
+> 
+> # Calculate statistics
+> mean_red <- mean(red_area)
+> sd_red <- sd(red_area)
+> 
+> # ==========================================
+> # CREATE GRAPH
+> # ==========================================
+> 
+> par(mar = c(5, 5, 4, 2) + 0.1)
+> 
+> plot(
++     1, mean_red,
++     type = "n",
++     xlim = c(0.5, 1.5),
++     ylim = c(130, 210),
++     xaxt = "n",
++     xlab = "Color Channel",
++     ylab = "Measured Area",
++     main = "Almond Milk Unknown: Protein Assay Response",
++     cex.main = 1.1,
++     cex.lab = 1.2,
++     las = 1,
++     bty = "l"
++ )
+> 
+> # ==========================================
+> # STANDARD DEVIATION ERROR BARS
+> # ==========================================
+> 
+> arrows(
++     x0 = 1,
++     y0 = mean_red - sd_red,
++     x1 = 1,
++     y1 = mean_red + sd_red,
++     angle = 90,
++     code = 3,
++     length = 0.08,
++     col = "firebrick",
++     lwd = 2
++ )
+> 
+> # ==========================================
+> # INDIVIDUAL MEASUREMENTS
+> # ==========================================
+> 
+> points(
++     x = c(0.96, 1, 1.04),
++     y = red_area,
++     pch = 16,
++     col = "firebrick",
++     cex = 1.4
++ )
+> 
+> # ==========================================
+> # MEAN (DIAMOND)
+> # ==========================================
+> 
+> points(
++     1, mean_red,
++     pch = 18,
++     col = "firebrick",
++     cex = 1.8
++ )
+> 
+> # ==========================================
+> # X-AXIS LABEL
+> # ==========================================
+> 
+> axis(
++     1,
++     at = 1,
++     labels = "Red",
++     cex.axis = 1.2
++ )
+> 
+> # ==========================================
+> # LEGEND
+> # ==========================================
+> 
+> legend(
++     "topleft",
++     legend = c(
++         "Individual Measurements",
++         "Mean",
++         "Mean +/- SD"
++     ),
++     pch = c(16, 18, NA),
++     lty = c(NA, NA, 1),
++     col = c("firebrick", "firebrick", "firebrick"),
++     bty = "n",
++     cex = 0.9
++ )
+> 
+> # ==========================================
+> # PRINT RESULTS
+> # ==========================================
+> 
+> cat("ALMOND MILK - RED CHANNEL\n")
+ALMOND MILK - RED CHANNEL
+> cat("Mean:", round(mean_red, 3), "\n")
+Mean: 170.815 
+> cat("Standard Deviation:", round(sd_red, 3), "\n")
+Standard Deviation: 18.281 
+> cat("Number of Measurements:", length(red_area), "\n")
+Number of Measurements: 3 
+> # ==========================================
+> # PROTEIN ASSAY - SOY AND ALMOND MILK
+> # RED CHANNEL ONLY
+> # ==========================================
+> 
+> # IMAGEJ DATA
+> 
+> soy_red <- c(137.123, 141.660, 172.591)
+> 
+> almond_red <- c(190.984, 166.126, 155.335)
+> 
+> 
+> # ==========================================
+> # CALIBRATION EQUATION
+> # ==========================================
+> 
+> # C = slope * pixel intensity + intercept
+> 
+> slope <- -0.074685
+> intercept <- 13.70344
+> 
+> # Dilution factor
+> DF <- 10
+> 
+> 
+> # ==========================================
+> # CALCULATE PROTEIN CONCENTRATIONS
+> # ==========================================
+> 
+> # Diluted protein concentrations (mg/mL)
+> 
+> soy_conc <- slope * soy_red + intercept
+> 
+> almond_conc <- slope * almond_red + intercept
+> 
+> 
+> # Original undiluted concentrations (mg/mL)
+> 
+> soy_original <- soy_conc * DF
+> 
+> almond_original <- almond_conc * DF
+> 
+> 
+> # ==========================================
+> # CALCULATE STATISTICS
+> # ==========================================
+> 
+> soy_mean <- mean(soy_original)
+> soy_sd <- sd(soy_original)
+> 
+> almond_mean <- mean(almond_original)
+> almond_sd <- sd(almond_original)
+> 
+> 
+> # ==========================================
+> # FUNCTION TO CREATE GRAPHS
+> # ==========================================
+> 
+> make_graph <- function(data, title) {
++     
++     mean_value <- mean(data)
++     sd_value <- sd(data)
++     
++     par(mar = c(5, 5, 4, 2) + 0.1)
++     
++     plot(
++         1, mean_value,
++         type = "n",
++         xlim = c(0.5, 1.5),
++         ylim = range(c(data, mean_value - sd_value,
++                        mean_value + sd_value)) + c(-10, 10),
++         xaxt = "n",
++         xlab = "Color Channel",
++         ylab = "Measured Area",
++         main = title,
++         cex.main = 1.1,
++         cex.lab = 1.2,
++         las = 1,
++         bty = "l"
++     )
++     
++     # Standard deviation error bars
++     arrows(
++         x0 = 1,
++         y0 = mean_value - sd_value,
++         x1 = 1,
++         y1 = mean_value + sd_value,
++         angle = 90,
++         code = 3,
++         length = 0.08,
++         col = "firebrick",
++         lwd = 2
++     )
++     
++     # Individual measurements
++     points(
++         x = c(0.96, 1, 1.04),
++         y = data,
++         pch = 16,
++         col = "firebrick",
++         cex = 1.4
++     )
++     
++     # Mean diamond
++     points(
++         1, mean_value,
++         pch = 18,
++         col = "firebrick",
++         cex = 1.8
++     )
++     
++     # X-axis
++     axis(
++         1,
++         at = 1,
++         labels = "Red",
++         cex.axis = 1.2
++     )
++     
++     # Legend
++     legend(
++         "topleft",
++         legend = c(
++             "Individual Measurements",
++             "Mean",
++             "Mean +/- SD"
++         ),
++         pch = c(16, 18, NA),
++         lty = c(NA, NA, 1),
++         col = "firebrick",
++         bty = "n",
++         cex = 0.9
++     )
++ }
+> 
+> 
+> # ==========================================
+> # GRAPH 1 - SOY MILK
+> # ==========================================
+> 
+> make_graph(
++     soy_red,
++     "Soy Milk Unknown: Protein Assay Response"
++ )
+> 
+> 
+> # ==========================================
+> # GRAPH 2 - ALMOND MILK
+> # ==========================================
+> 
+> make_graph(
++     almond_red,
++     "Almond Milk Unknown: Protein Assay Response"
++ )
+> 
+> 
+> # ==========================================
+> # PRINT PROTEIN CONCENTRATIONS
+> # ==========================================
+> 
+> cat("\nSOY MILK PROTEIN CONCENTRATION\n")
+
+SOY MILK PROTEIN CONCENTRATION
+> 
+> cat("Individual concentrations (mg/mL):\n")
+Individual concentrations (mg/mL):
+> print(round(soy_original, 3))
+[1] 34.624 31.236  8.135
+> 
+> cat("Mean:", round(soy_mean, 3), "mg/mL\n")
+Mean: 24.665 mg/mL
+> cat("SD:", round(soy_sd, 3), "mg/mL\n")
+SD: 14.415 mg/mL
+> 
+> 
+> cat("\nALMOND MILK PROTEIN CONCENTRATION\n")
+
+ALMOND MILK PROTEIN CONCENTRATION
+> 
+> cat("Individual concentrations (mg/mL):\n")
+Individual concentrations (mg/mL):
+> print(round(almond_original, 3))
+[1] -5.602 12.963 21.022
+> 
+> cat("Mean:", round(almond_mean, 3), "mg/mL\n")
+Mean: 9.461 mg/mL
+> cat("SD:", round(almond_sd, 3), "mg/mL\n")
+SD: 13.653 mg/mL
+> 
+> 
+> # ==========================================
+> # SUMMARY TABLE
+> # ==========================================
+> 
+> results <- data.frame(
++     Milk = c("Soy Milk", "Almond Milk"),
++     Mean_Protein_mg_mL = c(soy_mean, almond_mean),
++     SD_mg_mL = c(soy_sd, almond_sd)
++ )
+> 
+> print(results)
+         Milk
+1    Soy Milk
+2 Almond Milk
+  Mean_Protein_mg_mL SD_mg_mL
+1          24.664843 14.41533
+2           9.461217 13.65333
+> # ==========================================
+> # ALMOND MILK - RED CHANNEL
+> # ==========================================
+> 
+> # ImageJ Red channel measurements
+> almond_red <- c(190.984, 166.126, 155.335)
+> 
+> # Calculate statistics
+> mean_red <- mean(almond_red)
+> sd_red <- sd(almond_red)
+> 
+> # Create graph
+> par(mar = c(5, 5, 4, 2) + 0.1)
+> 
+> plot(
++     1, mean_red,
++     type = "n",
++     xlim = c(0.5, 1.5),
++     ylim = c(130, 210),
++     xaxt = "n",
++     xlab = "Color Channel",
++     ylab = "Mean Red Pixel Intensity",
++     main = "Almond Milk: Red Channel Protein Assay",
++     cex.main = 1.1,
++     cex.lab = 1.2,
++     las = 1,
++     bty = "l"
++ )
+> 
+> # Standard deviation error bars
+> arrows(
++     x0 = 1,
++     y0 = mean_red - sd_red,
++     x1 = 1,
++     y1 = mean_red + sd_red,
++     angle = 90,
++     code = 3,
++     length = 0.08,
++     col = "firebrick",
++     lwd = 2
++ )
+> 
+> # Individual measurements
+> points(
++     x = c(0.96, 1, 1.04),
++     y = almond_red,
++     pch = 16,
++     col = "firebrick",
++     cex = 1.4
++ )
+> 
+> # Mean diamond
+> points(
++     1, mean_red,
++     pch = 18,
++     col = "firebrick",
++     cex = 1.8
++ )
+> 
+> # X-axis
+> axis(1, at = 1, labels = "Red", cex.axis = 1.2)
+> 
+> # Legend
+> legend(
++     "topleft",
++     legend = c(
++         "Individual Measurements",
++         "Mean",
++         "Mean +/- SD"
++     ),
++     pch = c(16, 18, NA),
++     lty = c(NA, NA, 1),
++     col = "firebrick",
++     bty = "n",
++     cex = 0.9
++ )
+> 
+> # Print results
+> cat("ALMOND MILK - RED CHANNEL\n")
+ALMOND MILK - RED CHANNEL
+> cat("Mean:", round(mean_red, 3), "\n")
+Mean: 170.815 
+> cat("SD:", round(sd_red, 3), "\n")
+SD: 18.281 
+> 
+> # Protein concentration using calibration equation
+> slope <- -0.074685
+> intercept <- 13.70344
+> DF <- 10
+> 
+> almond_protein <- (slope * almond_red + intercept) * DF
+> 
+> cat("Protein concentration (mg/mL):\n")
+Protein concentration (mg/mL):
+> print(round(almond_protein, 3))
+[1] -5.602 12.963 21.022
+> cat("Mean protein:", round(mean(almond_protein), 3), "mg/mL\n")
+Mean protein: 9.461 mg/mL
+> cat("Protein SD:", round(sd(almond_protein), 3), "mg/mL\n")
+Protein SD: 13.653 mg/mL
+> 
+> # ==========================================
+> # SOY MILK - RED CHANNEL
+> # ==========================================
+> 
+> # ImageJ Red channel measurements
+> soy_red <- c(137.123, 141.660, 172.591)
+> 
+> # Calculate statistics
+> mean_red <- mean(soy_red)
+> sd_red <- sd(soy_red)
+> 
+> # Create graph
+> par(mar = c(5, 5, 4, 2) + 0.1)
+> 
+> plot(
++     1, mean_red,
++     type = "n",
++     xlim = c(0.5, 1.5),
++     ylim = c(110, 200),
++     xaxt = "n",
++     xlab = "Color Channel",
++     ylab = "Mean Red Pixel Intensity",
++     main = "Soy Milk: Red Channel Protein Assay",
++     cex.main = 1.1,
++     cex.lab = 1.2,
++     las = 1,
++     bty = "l"
++ )
+> 
+> # Standard deviation error bars
+> arrows(
++     x0 = 1,
++     y0 = mean_red - sd_red,
++     x1 = 1,
++     y1 = mean_red + sd_red,
++     angle = 90,
++     code = 3,
++     length = 0.08,
++     col = "firebrick",
++     lwd = 2
++ )
+> 
+> # Individual measurements
+> points(
++     x = c(0.96, 1, 1.04),
++     y = soy_red,
++     pch = 16,
++     col = "firebrick",
++     cex = 1.4
++ )
+> 
+> # Mean diamond
+> points(
++     1, mean_red,
++     pch = 18,
++     col = "firebrick",
++     cex = 1.8
++ )
+> 
+> # X-axis
+> axis(1, at = 1, labels = "Red", cex.axis = 1.2)
+> 
+> # Legend
+> legend(
++     "topleft",
++     legend = c(
++         "Individual Measurements",
++         "Mean",
++         "Mean +/- SD"
++     ),
++     pch = c(16, 18, NA),
++     lty = c(NA, NA, 1),
++     col = "firebrick",
++     bty = "n",
++     cex = 0.9
++ )
+> 
+> # Print results
+> cat("SOY MILK - RED CHANNEL\n")
+SOY MILK - RED CHANNEL
+> cat("Mean:", round(mean_red, 3), "\n")
+Mean: 150.458 
+> cat("SD:", round(sd_red, 3), "\n")
+SD: 19.302 
+> 
+> # Protein concentration using calibration equation
+> slope <- -0.074685
+> intercept <- 13.70344
+> DF <- 10
+> 
+> soy_protein <- (slope * soy_red + intercept) * DF
+> 
+> cat("Protein concentration (mg/mL):\n")
+Protein concentration (mg/mL):
+> print(round(soy_protein, 3))
+[1] 34.624 31.236  8.135
+> cat("Mean protein:", round(mean(soy_protein), 3), "mg/mL\n")
+Mean protein: 24.665 mg/mL
+> cat("Protein SD:", round(sd(soy_protein), 3), "mg/mL\n")
+Protein SD: 14.415 mg/mL
+> # ==========================================
+> # SOY MILK VS ALMOND MILK
+> # RED CHANNEL - MEAN +/- SEM
+> # ==========================================
+> 
+> # ImageJ Red channel measurements
+> soy_red <- c(137.123, 141.660, 172.591)
+> almond_red <- c(190.984, 166.126, 155.335)
+> 
+> # ==========================================
+> # CALCULATE STATISTICS
+> # ==========================================
+> 
+> # Means
+> soy_mean <- mean(soy_red)
+> almond_mean <- mean(almond_red)
+> 
+> # Standard error of the mean (SEM)
+> soy_sem <- sd(soy_red) / sqrt(length(soy_red))
+> almond_sem <- sd(almond_red) / sqrt(length(almond_red))
+> 
+> # Combine statistics
+> means <- c(soy_mean, almond_mean)
+> sems <- c(soy_sem, almond_sem)
+> 
+> # ==========================================
+> # CREATE GRAPH
+> # ==========================================
+> 
+> par(mar = c(5, 5, 4, 2) + 0.1)
+> 
+> plot(
++     c(1, 2),
++     means,
++     type = "n",
++     xlim = c(0.5, 2.5),
++     ylim = c(110, 210),
++     xaxt = "n",
++     xlab = "Plant-Based Milk Sample",
++     ylab = "Mean Red Pixel Intensity",
++     main = "Red Channel Protein Assay: Soy vs. Almond Milk",
++     cex.main = 1.1,
++     cex.lab = 1.2,
++     las = 1,
++     bty = "l"
++ )
+> 
+> # ==========================================
+> # SEM ERROR BARS
+> # ==========================================
+> 
+> arrows(
++     x0 = c(1, 2),
++     y0 = means - sems,
++     x1 = c(1, 2),
++     y1 = means + sems,
++     angle = 90,
++     code = 3,
++     length = 0.08,
++     col = "firebrick",
++     lwd = 2
++ )
+> 
+> # ==========================================
+> # INDIVIDUAL MEASUREMENTS
+> # ==========================================
+> 
+> # Soy milk
+> points(
++     x = c(0.94, 1, 1.06),
++     y = soy_red,
++     pch = 16,
++     col = "firebrick",
++     cex = 1.3
++ )
+> 
+> # Almond milk
+> points(
++     x = c(1.94, 2, 2.06),
++     y = almond_red,
++     pch = 16,
++     col = "firebrick",
++     cex = 1.3
++ )
+> 
+> # ==========================================
+> # MEAN DIAMONDS
+> # ==========================================
+> 
+> points(
++     x = c(1, 2),
++     y = means,
++     pch = 18,
++     col = "darkred",
++     cex = 1.8
++ )
+> 
+> # ==========================================
+> # X-AXIS LABELS
+> # ==========================================
+> 
+> axis(
++     1,
++     at = c(1, 2),
++     labels = c("Soy Milk", "Almond Milk"),
++     cex.axis = 1.2
++ )
+> 
+> # ==========================================
+> # LEGEND
+> # ==========================================
+> 
+> legend(
++     "topleft",
++     legend = c(
++         "Individual Measurements",
++         "Mean",
++         "Mean +/- SEM"
++     ),
++     pch = c(16, 18, NA),
++     lty = c(NA, NA, 1),
++     col = c("firebrick", "darkred", "firebrick"),
++     bty = "n",
++     cex = 0.9
++ )
+> 
+> # ==========================================
+> # PRINT RESULTS
+> # ==========================================
+> 
+> cat("\nSOY MILK - RED CHANNEL\n")
+
+SOY MILK - RED CHANNEL
+> cat("Mean:", round(soy_mean, 3), "\n")
+Mean: 150.458 
+> cat("SEM:", round(soy_sem, 3), "\n")
+SEM: 11.144 
+> 
+> cat("\nALMOND MILK - RED CHANNEL\n")
+
+ALMOND MILK - RED CHANNEL
+> cat("Mean:", round(almond_mean, 3), "\n")
+Mean: 170.815 
+> cat("SEM:", round(almond_sem, 3), "\n")
+SEM: 10.555 
+
+
+
